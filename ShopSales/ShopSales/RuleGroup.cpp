@@ -9,12 +9,16 @@ RuleGroup::RuleGroup(std::list<std::shared_ptr<IRule>> const & rules)
 
 double RuleGroup::modifyCartifPossibleAndGetPrice(ItemsCart & cart)
 {
+	//проход по правилам в группе
 	for (auto& rule : m_rules)
 	{
+		//если правило возможно осуществить
 		if (rule && rule->isPossible(cart))
 		{
+			//влзвращаем цену со скидкой
 			return rule->modifyCartifPossibleAndGetPrice(cart);
 		}
 	}
+	//если ни одно правило не прошло возвращаем 0
 	return 0.0;
 }

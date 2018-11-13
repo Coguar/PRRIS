@@ -15,9 +15,11 @@ bool AbstractRule::isForAllSets()
 double AbstractRule::getPrice()
 {
 	double price = 0;
+	//подсчет общей стоимости без скидок
 	for (auto& type : m_ruletypes)
 	{
 		price += Item(type).getPrice();
 	}
+	//умножение общей стоимости на скидочный коэфицент (скидка 15% - коэффицент 0.85)
 	return price * m_saleK;
 }

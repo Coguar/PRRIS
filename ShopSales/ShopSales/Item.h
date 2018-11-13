@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 
+//тип продуктов
 enum class ItemType{
 	A = 0,
 	B,
@@ -17,6 +18,7 @@ enum class ItemType{
 	M
 };
 
+// карта цен на продукты
 namespace {
 	static const std::map<ItemType, double> PriceList = {
 		{ItemType::A, 5.0}, {ItemType::B, 7.0}, {ItemType::C, 6.0}, {ItemType::D, 10.0},
@@ -26,13 +28,15 @@ namespace {
 	};
 }
 
+//класс продукта
 class Item
 {
 public:
 	Item(ItemType type);
 	~Item() = default;
-
+	//получение цены
 	double getPrice() const;
+	//получение типа
 	ItemType getType() const;
 	bool isChecked() const;
 
